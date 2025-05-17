@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Institute of Management Kolhapur College</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700&display=swap');
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body, html {
+      margin: 0;
+      font-family: 'Rubik', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      background: #2c3e50;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .logo {
+      color: #ecf0f1;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 1.2px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: #3498db;
+    }
+    #hero {
+      background: linear-gradient(135deg, #2980b9, #6dd5fa);
+      color: white;
+      padding: 120px 20px 80px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    #hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+    }
+    #hero p {
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+    h2.section-title {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #2c3e50;
+      border-bottom: 3px solid #3498db;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+    section {
+      padding: 60px 0;
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.07);
+    }
+    /* Features */
+    #features .feature-list {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #features .feature {
+      flex: 1 1 250px;
+      background: #ecf0f1;
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    #features .feature:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    #features .feature h3 {
+      margin-bottom: 15px;
+      color: #2980b9;
+      font-weight: 600;
+    }
+    #features .feature p {
+      color: #555;
+      font-weight: 300;
+    }
+    /* Courses */
+    #courses .courses-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 25px;
+    }
+    #courses .course {
+      background: #3498db;
+      color: white;
+      border-radius: 10px;
+      padding: 25px 20px;
+      box-shadow: 0 6px 18px rgba(52,152,219,0.4);
+      transition: transform 0.3s ease;
+    }
+    #courses .course:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 22px rgba(52,152,219,0.6);
+    }
+    #courses .course h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.03em;
+    }
+    #courses .course p {
+      font-weight: 300;
+      line-height: 1.4;
+    }
+    /* About */
+    #about p {
+      max-width: 720px;
+      margin: auto;
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: #444;
+    }
+    /* Fee Details */
+    #fees table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    #fees thead {
+      background: #2980b9;
+      color: white;
+    }
+    #fees th, #fees td {
+      padding: 14px 20px;
+      border-bottom: 1px solid #ddd;
+      font-weight: 400;
+    }
+    #fees tbody tr:hover {
+      background: #f1faff;
+    }
+    /* Contact */
+    #contact .contact-container {
+      max-width: 600px;
+      margin: auto;
+    }
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    #contact label {
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    #contact input, #contact textarea {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1.8px solid #bdc3c7;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+    }
+    #contact input:focus, #contact textarea:focus {
+      outline: none;
+      border-color: #2980b9;
+      box-shadow: 0 0 8px #8ab7ff80;
+    }
+    #contact textarea {
+      min-height: 100px;
+    }
+    #contact button {
+      background: #2980b9;
+      color: white;
+      padding: 14px 20px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      align-self: flex-start;
+      width: 130px;
+    }
+    #contact button:hover {
+      background: #2073c3;
+    }
+    #contact .success-message {
+      color: #27ae60;
+      font-weight: 600;
+      margin-top: 12px;
+      display: none;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      background: #2c3e50;
+      color: #ecf0f1;
+      font-size: 0.9rem;
+      margin-top: 40px;
+      user-select: none;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      #features .feature-list {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav {
+        flex-wrap: wrap;
+        height: auto;
+        gap: 8px;
+      }
+      .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+      }
+      #hero h1 {
+        font-size: 2rem;
+      }
+      #courses .courses-list {
+        grid-template-columns: 1fr;
+      }
+      #contact button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="container" aria-label="Primary navigation">
+    <div class="logo" tabindex="0">IM Kolhapur College</div>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#fees">Fee Details</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section id="hero" role="banner" tabindex="-1">
+    <h1>Institute of Management Kolhapur College</h1>
+    <p>Your gateway to leadership and professional success. Join us to take your management career to the next level.</p>
+    <p>The Institute of Management, Kolhapur, which is a constituent unit of Bharati Vidyapeeth Deemed to be University, Pune, was set up in 1994 under the mentorship of Dr. Patangrao Kadam. The objective of setting up the institute was to provide quality education in management sciences.</p>
+  </section>
+
+  <section id="features" class="container" tabindex="-1" aria-label="Features of IM Kolhapur College">
+    <h2 class="section-title">Features</h2>
+    <div class="feature-list">
+      <article class="feature" tabindex="0" role="region" aria-label="Experienced Faculty">
+        <h3>Experienced Faculty</h3>
+        <p>Learn from industry experts and seasoned academicians with deep knowledge and practical insight.</p>
+      </article>
+      <article class="feature" tabindex="0" role="region" aria-label="Industry Exposure">
+        <h3>Industry Exposure</h3>
+        <p>Work on real-life projects and internships to bridge the gap between theory and practice.</p>
+      </article>
+      <article class="feature" tabindex="0" role="region" aria-label="Modern Infrastructure">
+        <h3>Modern Infrastructure</h3>
+        <p>State-of-the-art classrooms, library, and IT labs designed for effective learning.</p>
+      </article>
+      <article class="feature" tabindex="0" role="region" aria-label="Placement Support">
+        <h3>Placement Support</h3>
+        <p>Dedicated placement cell with strong corporate connections to support your career goals.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="courses" class="container" tabindex="-1" aria-label="Courses offered">
+    <h2 class="section-title">Courses</h2>
+    <div class="courses-list" role="list">
+      <article class="course" tabindex="0" role="listitem" aria-label="Master of Computer Applications">
+        <h3>Master of Computer Applications (MCA)</h3>
+        <p>It provides a comprehensive understanding of software development, programming languages, and related concepts. MCA programs are designed for students seeking to specialize in areas like data management, IT infrastructure, and system design. .</p>
+      </article>
+      <article class="course" tabindex="0" role="listitem" aria-label="Master of Business Administration">
+        <h3>Master of Business Administration (MBA)</h3>
+        <p> MBA degree is a 2-year postgraduate qualification designed to equip students with advanced business skills and knowledge. It typically covers a wide range of subjects including finance, marketing, human resources, operations, and strategy. One can get MBA degree online as well as offline..</p>
+      </article>
+      <article class="course" tabindex="0" role="listitem" aria-label="Bachelor of Business Administration">
+        <h3>Bachelor of Business Administration (BBA)</h3>
+        <p>A Bachelor of Business Administration (BBA) is a three-year undergraduate degree program focused on business management and administration. It prepares students for careers in various business sectors by providing a solid foundation in core areas like marketing, finance, and human resources. Students can also choose to specialize in areas such as international business or digital marketing. .</p>
+      </article>
+      <article class="course" tabindex="0" role="listitem" aria-label="Bachelor of Computer Applications">
+        <h3>Bachelor of Computer Applications (BCA)</h3>
+        <p>The BCA curriculum typically covers fundamentals of computer science, programming languages, data management, networking, web designing, and operating systems. Graduates can pursue careers in software development, web development, data science, and other IT-related fields.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" class="container" tabindex="-1" aria-label="About IM Kolhapur College">
+    <h2 class="section-title">About Us</h2>
+    <p>Till 2005, the Institute was affiliated to Shivaji University, Kolhapur and was brought under BVDU, Pune as a constituent unit from the academic year 2005-06.
+
+The institute has made a mark for itself in the field of management and in addition to being accorded recognition by the Government of Maharashtra, it has also been approved by AICTE, New Delhi. The MBA and MCA programmes offered by the institute have also been given approval by the AICTE.
+
+The Institute has a huge building covering an area of 32,258 sq. ft. with classrooms measuring as much as 710 sq. ft. There is a spacious library spread out over 2600 sq. ft. with 16,300 books and 114 journals. It is a matter of pride that the papers of our highly qualified faculty members are published in both national as well as international journals.</p>
+  </section>
+
+  <section id="fees" class="container" tabindex="-1" aria-label="Fee Details">
+    <h2 class="section-title">Fee Details</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Duration</th>
+          <th>Tuition Fee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Master of Computer Applications (MCA)</td>
+          <td>2 Years</td>
+          <td>₹ 2,00,000</td>
+        </tr>
+        <tr>
+          <td>Master of Business Administration (MBA)</td>
+          <td>2 Years</td>
+          <td>₹ 2,50,000</td>
+        </tr>
+        <tr>
+          <td>Bachelor of Business Administration (BBA)</td>
+          <td>3 Years</td>
+          <td>₹ 1,20,000</td>
+        </tr>
+        <tr>
+          <td>Bachelor of Computer Applications (BCA)</td>
+          <td>3 Years</td>
+          <td>₹ 1,10,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="contact" class="container" tabindex="-1" aria-label="Contact Us">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact-container">
+      <form id="contact-form" novalidate>
+        <label for="name">Name <sup aria-hidden="true" style="color:red">*</sup></label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required aria-required="true" aria-describedby="name-error" />
+        <span id="name-error" style="color:#e74c3c; font-size:0.85rem; display:none;">Please enter your name</span>
+
+        <label for="email">Email <sup aria-hidden="true" style="color:red">*</sup></label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required aria-required="true" aria-describedby="email-error" />
+        <span id="email-error" style="color:#e74c3c; font-size:0.85rem; display:none;">Please enter a valid email</span>
+
+        <label for="message">Message <sup aria-hidden="true" style="color:red">*</sup></label>
+        <textarea id="message" name="message" placeholder="Write your message here..." required aria-required="true" aria-describedby="message-error"></textarea>
+        <span id="message-error" style="color:#e74c3c; font-size:0.85rem; display:none;">Please enter your message</span>
+
+        <button type="submit" aria-label="Send Message">Send</button>
+        <div class="success-message" role="alert" aria-live="polite">Thank you! Your message has been prepared in your mail client.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2024 Institute of Management Kolhapur College. All rights reserved.
+</footer>
+
+<script>
+  document.querySelectorAll("nav a[href^='#']").forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = anchor.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      const yOffset = -60;
+      const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({top: y, behavior:'smooth'});
+    });
+  });
+
+  const form = document.getElementById('contact-form');
+  const inputs = {
+    name: form.querySelector('#name'),
+    email: form.querySelector('#email'),
+    message: form.querySelector('#message')
+  };
+  const errors = {
+    name: form.querySelector('#name-error'),
+    email: form.querySelector('#email-error'),
+    message: form.querySelector('#message-error')
+  };
+  const successMessage = form.querySelector('.success-message');
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    let valid = true;
+
+    if(!inputs.name.value.trim()){
+      errors.name.style.display = 'block';
+      valid = false;
+    } else {
+      errors.name.style.display = 'none';
+    }
+    if(!validateEmail(inputs.email.value.trim())){
+      errors.email.style.display = 'block';
+      valid = false;
+    } else {
+      errors.email.style.display = 'none';
+    }
+    if(!inputs.message.value.trim()){
+      errors.message.style.display = 'block';
+      valid = false;
+    } else {
+      errors.message.style.display = 'none';
+    }
+
+    if(valid){
+      const emailTo = 'gorearshad@gmail.com';
+      const subject = encodeURIComponent('Inquiry from Institute of Management Kolhapur College Website');
+      const body = encodeURIComponent(
+        `Name: ${inputs.name.value.trim()}\n` +
+        `Email: ${inputs.email.value.trim()}\n\n` +
+        `${inputs.message.value.trim()}`
+      );
+      const mailtoLink = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+
+      successMessage.style.display = 'block';
+      window.location.href = mailtoLink;
+
+      setTimeout(()=> {
+        successMessage.style.display = 'none';
+        form.reset();
+      }, 3000);
+    }
+  });
+</script>
+</body>
+</html>
